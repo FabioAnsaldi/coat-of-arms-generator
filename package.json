@@ -1,0 +1,20 @@
+{
+  "name": "stemma",
+  "version": "1.0.0",
+  "description": "Generatore di stemmi ",
+  "keywords": [
+    "svg",
+    "stemma"
+  ],
+  "main": "index.js",
+  "author": "fabio Ansaldi ",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "commander": "^2.19.0",
+    "fs-sync": "^1.0.6",
+    "node-minify": "^3.6.0"
+  }
+}

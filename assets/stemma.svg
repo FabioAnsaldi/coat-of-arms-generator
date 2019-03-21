@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        id="svg2"
+        inkscape:version="0.46dev+devel"
+        width="125"
+        height="150"
+        version="1.0"
+        sodipodi:version="0.32"
+        sodipodi:docname="Stemma_da_disegnare.svg"
+        inkscape:output_extension="org.inkscape.output.svg.inkscape"
+        sodipodi:docbase="C:\Documents and Settings\Flanker\Desktop">
+    <defs>
+        <clipPath id="default">
+            <path d="M 3.8258565,3.3641168 L 3.8258565,116.81744 C 3.8258565,147.94984 49.371975,123.50125 62.5,146.63588 C 75.628023,123.50125 121.17414,147.94984 121.17414,116.81744 L 121.17414,3.3641168 L 3.8258565,3.3641168 z " id="rect1370" sodipodi:nodetypes="cccccc"/>
+        </clipPath>
+
+        <linearGradient id="stroke" x1="0" y1="0" x2="90%" y2="90%" gradientUnits="userSpaceOnUse">
+            <stop stop-color="{{border-light}}" offset="0" />
+            <stop stop-color="{{border}}" offset="1" />
+        </linearGradient>
+        <!--<linearGradient id="rect-0" x1="0" y1="0" x2="90%" y2="90%" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#333" offset="0"/>
+            <stop stop-color="#000" offset="1"/>
+        </linearGradient>-->
+        {{linearGradient-rect}}
+    </defs>
+
+    <!--<g clip-path="url(#default)">
+        <rect x="0" y="0" width="125" height="150" fill="red"/>
+        <rect x="50%" y="0" width="125" height="150" fill="green"/>
+    </g>-->
+    <!--<g clip-path="url(#default)">
+        <rect x="0" y="0" width="125" height="150" fill="red"/>
+        <rect x="0" y="50%" width="125" height="150" fill="green"/>
+    </g>-->
+
+    <g clip-path="url(#default)">
+        {{rect}}
+    </g>
+
+    <path stroke="url(#stroke)" style="fill-opacity:0;stroke-width:{{stroke}};stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" d="M 3.8258565,3.3641168 L 3.8258565,116.81744 C 3.8258565,147.94984 49.371975,123.50125 62.5,146.63588 C 75.628023,123.50125 121.17414,147.94984 121.17414,116.81744 L 121.17414,3.3641168 L 3.8258565,3.3641168 z" id="rect1370" sodipodi:nodetypes="cccccc"/>
+
+</svg>
