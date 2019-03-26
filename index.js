@@ -15,14 +15,36 @@ const prepareRect = (elements, starting) => {
 
     for (let i = 0; i < elements.length; i++) {
 
+        let transform = '';
         if (Array.isArray(elements[i])) {
 
             let new_p = (starting.p / elements.length);
             let new_k = i * new_p;
-            arrayElement = arrayElement.concat(prepareRect(elements[i], {y: 0, x: 0, p: new_p, k: new_k}));
+            arrayElement = arrayElement.concat(prepareRect(elements[i], {
+                y: 0,
+                x: 0,
+                p: new_p,
+                k: new_k,
+                s: starting.s
+            }));
             continue;
         }
-        if (elements[i].horizontal) {
+        if (elements[i].rotate) {
+
+            let _height = 150 / 2;
+            if (starting.k === 0) {
+
+                _height += starting.s;
+            } else {
+                _height += 150 / 100 * starting.k;
+            }
+            let _width = 125 / 4;
+            if (starting.k === 0) {
+
+                _width = 125 / 4 - starting.s * 2;
+            }
+            transform = 'transform="rotate(' + elements[i].rotate + ' ' + _width + ' ' + _height + ')"';
+        } else if (elements[i].horizontal) {
 
             starting.y = i * (starting.p / elements.length) + starting.k;
             starting.x = 0;
@@ -32,7 +54,7 @@ const prepareRect = (elements, starting) => {
             starting.x = i * (100 / elements.length);
         }
 
-        let rect = '<rect x="' + starting.x + '%" y="' + starting.y + '%" width="125" height="150" fill="url(#rect-' + starting.k + '-' +  + starting.p + '-' + i + ')"/>';
+        let rect = '<rect x="' + starting.x + '%" y="' + starting.y + '%" width="125" height="150" fill="url(#rect-' + starting.k + '-' + +starting.p + '-' + i + ')" ' + transform + '/>';
         let linearGradientLight = '#' + (parseInt(elements[i].background.replace('#', ''), 16) + 819).toString(16);
         let gradient = '<linearGradient id="rect-' + starting.k + '-' +  + starting.p + '-' + i + '" x1="0" y1="0" x2="90%" y2="90%" gradientUnits="userSpaceOnUse"><stop stop-color="' + linearGradientLight + '" offset="0"/><stop stop-color="' + elements[i].background + '" offset="1"/></linearGradient>';
 
@@ -67,35 +89,16 @@ if (sync.exists('assets/stemma.svg')) {
         border: '#333',
         stroke: '3.5',
         divided: [
-            [
-                {
-                    background: '#000',
-                    vertical: true,
-                    full: false,
-                    block: 'full'
-                },
-                {
-                    background: '#ccc',
-                    vertical: true,
-                    full: false,
-                    block: 'full'
-                }
-            ],
-            [
-                {
-                    background: '#ccc',
-                    vertical: true,
-                    full: false,
-                    block: 'full'
-                },
-                {
-                    background: '#000',
-                    vertical: true,
-                    full: false,
-                    block: 'full'
-                }
-            ]
-        ],
+            {
+                background: '#ccc',
+                horizontal: true,
+            },
+            {
+                background: '#000',
+                horizontal: true,
+                rotate: 45
+            }
+        ]
     };
 
     stemma = stemma.replace(/{{border}}/g, parameters.border);
@@ -105,7 +108,7 @@ if (sync.exists('assets/stemma.svg')) {
     stemma = stemma.replace(/{{border-light}}/g, borderLight);
     stemma = stemma.replace(/{{stroke}}/g, parameters.stroke);
 
-    let arrayElement = prepareRect(parameters.divided, {y: 0, x: 0, p: 100, k: 0});
+    let arrayElement = prepareRect(parameters.divided, {y: 0, x: 0, p: 100, k: 0, s: parseFloat(parameters.stroke)});
 
     stemma = renderRect(arrayElement, stemma);
 
